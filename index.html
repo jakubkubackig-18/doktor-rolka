@@ -11,6 +11,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light">
     <title>Doktor Rolka | Rolki wideo dla branży medycznej</title>
     <meta name="description" content="Profesjonalne rolki wideo dla gabinetów medycznych. Edukacyjne treści, które budują zaufanie pacjentów.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +31,7 @@
             --gray-600: #525252;
             --accent: #4a90a4;
             --success: #22c55e;
+            color-scheme: light only;
         }
 
         * {
@@ -403,6 +406,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
+            background: var(--navy);
         }
 
         /* FAQ Section */
@@ -639,7 +643,7 @@
                 <li><a href="blog/">Blog</a></li>
                 <li><a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank" class="nav-cta">Umów rozmowę</a></li>
             </ul>
-            <button class="mobile-menu" onclick="toggleMenu()">
+            <button class="mobile-menu" id="mobile-menu-btn" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -737,22 +741,22 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <video controls playsinline muted preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 16'%3E%3Crect fill='%231e3a5f' width='9' height='16'/%3E%3Cpolygon fill='%23fff' points='3.5,5 3.5,11 6.5,8'/%3E%3C/svg%3E">
+                    <video controls playsinline webkit-playsinline preload="auto">
                         <source src="rolka1.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="portfolio-item">
-                    <video controls playsinline muted preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 16'%3E%3Crect fill='%231e3a5f' width='9' height='16'/%3E%3Cpolygon fill='%23fff' points='3.5,5 3.5,11 6.5,8'/%3E%3C/svg%3E">
+                    <video controls playsinline webkit-playsinline preload="auto">
                         <source src="rolka2.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="portfolio-item">
-                    <video controls playsinline muted preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 16'%3E%3Crect fill='%231e3a5f' width='9' height='16'/%3E%3Cpolygon fill='%23fff' points='3.5,5 3.5,11 6.5,8'/%3E%3C/svg%3E">
+                    <video controls playsinline webkit-playsinline preload="auto">
                         <source src="rolka3.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="portfolio-item">
-                    <video controls playsinline muted preload="auto" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 16'%3E%3Crect fill='%231e3a5f' width='9' height='16'/%3E%3Cpolygon fill='%23fff' points='3.5,5 3.5,11 6.5,8'/%3E%3C/svg%3E">
+                    <video controls playsinline webkit-playsinline preload="auto">
                         <source src="rolka4.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -850,9 +854,24 @@
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuBtn) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                });
+                
+                menuBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(button => {
