@@ -124,6 +124,10 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            position: relative;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .mobile-menu span {
@@ -574,6 +578,8 @@
 
             .mobile-menu {
                 display: block;
+                min-width: 44px;
+                min-height: 44px;
             }
 
             .hero {
