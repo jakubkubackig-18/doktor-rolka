@@ -265,7 +265,103 @@
             font-size: 4rem;
             color: var(--white);
             opacity: 0.9;
+            z-index: 10;
+            position: relative;
         }
+
+        /* Hero Animation - Option 2: Abstract Studio */
+        .studio-ring {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+
+        .studio-ring-outer {
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            animation: spin 20s linear infinite reverse;
+        }
+
+        .studio-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: rgba(255, 255, 255, 0.5);
+            border-style: solid;
+            transition: all 0.3s;
+        }
+
+        .c-tl {
+            top: 20px;
+            left: 20px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .c-tr {
+            top: 20px;
+            right: 20px;
+            border-width: 2px 2px 0 0;
+        }
+
+        .c-bl {
+            bottom: 20px;
+            left: 20px;
+            border-width: 0 0 2px 2px;
+        }
+
+        .c-br {
+            bottom: 20px;
+            right: 20px;
+            border-width: 0 2px 2px 0;
+        }
+
+        .studio-rec {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            /* Offset for corner */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: monospace;
+            color: #ff5555;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .rec-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff5555;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
 
         .hero-stats {
             display: flex;
@@ -382,6 +478,51 @@
         .solution-card p {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
+        }
+
+        .solution-intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .solution-header-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .solution-header-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .solution-header-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .solution-video-container {
+            width: 250px;
+            flex-shrink: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: #000;
+            aspect-ratio: 9/16;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .solution-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Portfolio Section - HTML5 VIDEO */
@@ -609,6 +750,22 @@
                 justify-content: flex-start;
             }
 
+            .solution-intro {
+                flex-direction: column;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .solution-header-content {
+                text-align: center;
+            }
+
+            .solution-video-container {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 300px;
+            }
+
             .problem-grid,
             .solution-grid {
                 grid-template-columns: 1fr;
@@ -647,7 +804,7 @@
                 <li><a href="#jak-dziala">Jak to działa?</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="blog/">Blog</a></li>
+                <!-- <li><a href="blog/">Blog</a></li> -->
                 <li><a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank" class="nav-cta">Umów
                         rozmowę</a></li>
             </ul>
@@ -673,7 +830,18 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-image"></div>
+                <div class="hero-image">
+                    <!-- Option 2: Abstract Studio -->
+                    <div class="studio-ring"></div>
+                    <div class="studio-ring studio-ring-outer"></div>
+                    <div class="studio-corner c-tl"></div>
+                    <div class="studio-corner c-tr"></div>
+                    <div class="studio-corner c-bl"></div>
+                    <div class="studio-corner c-br"></div>
+                    <div class="studio-rec">
+                        <div class="rec-dot"></div> REC
+                    </div>
+                </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">41%</div>
@@ -723,10 +891,18 @@
     <!-- Solution Section -->
     <section class="solution" id="jak-dziala">
         <div class="container">
-            <div class="section-header">
-                <h2>Rozwiązanie: jedna sesja = miesiąc treści</h2>
-                <p>Przyjeżdżam z profesjonalnym sprzętem, nagrywamy materiał na cały miesiąc, a Ty wracasz do pacjentów.
-                </p>
+            <div class="solution-intro">
+                <div class="solution-header-content">
+                    <h2>Rozwiązanie: jedna sesja = miesiąc treści</h2>
+                    <p>Przyjeżdżam z profesjonalnym sprzętem, nagrywamy materiał na cały miesiąc, a Ty wracasz do
+                        pacjentów.</p>
+                </div>
+                <div class="solution-video-container">
+                    <video controls autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                        <source src="how-to-section.mp4" type="video/mp4">
+                        Twoja przeglądarka nie obsługuje odtwarzacza wideo.
+                    </video>
+                </div>
             </div>
             <div class="solution-grid">
                 <div class="solution-card">
