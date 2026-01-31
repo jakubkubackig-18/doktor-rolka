@@ -275,7 +275,8 @@
             flex-direction: column;
             gap: 24px;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
+            /* Reduced from 500px */
             margin-left: auto;
         }
 
@@ -980,36 +981,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="opinie">
-        <div class="container">
-            <div class="section-header">
-                <h2>Co mówią klienci?</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Nagrania z Kubą to <strong>pełen profesjonalizm</strong>. Zaczynając od sprzętu, przez sam plan
-                        zdjęciowy i <strong>finalny efekt wysokiej jakości</strong>. Kuba jest świetnym montażystą -
-                        działa zgodnie ze scenariuszem, ale i <strong>sam wykazuje się inicjatywą</strong> i dodatkowymi
-                        pomysłami. Komunikaty o dosyć trudnej tematyce zostały nie tylko dobrze nagrane, ale również
-                        dobrze wybrzmiały, z odpowiednimi napisami i dopasowanym VO. Materiały wyszły inspirująco,
-                        motywująco, a ich <strong>jakość zachwyciła wielu odbiorców</strong>. Polecam tworzenie contentu
-                        z Kubą!"
-                    </div>
-                    <div class="testimonial-author">Tobiasz</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Z Kubą nagrywaliśmy dłuższe filmy, z których Kuba wyciągał najciekawsze fragmenty i tworzył
-                        rolki. Nie raz byłem zaskoczony, jak później te <strong>rolki wykręcały bardzo dużo
-                            wyświetleń</strong>."
-                    </div>
-                    <div class="testimonial-author">Piotr</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -1135,7 +1107,7 @@
 
             // 1. Counter Animation
             const counters = document.querySelectorAll('.stat-number');
-            const speed = 200; // The lower the slower
+            // duration based logic
 
             const startCounters = (entries, observer) => {
                 entries.forEach(entry => {
@@ -1144,13 +1116,19 @@
                         const target = +counter.getAttribute('data-target');
                         const suffix = counter.getAttribute('data-suffix') || '';
 
-                        const updateCount = () => {
-                            const count = +counter.innerText.replace(suffix, '');
-                            const inc = target / speed;
+                        const duration = 1500; // Animation duration in ms
+                        const frameDuration = 20;
+                        const totalFrames = duration / frameDuration;
+                        const inc = target / totalFrames;
 
-                            if (count < target) {
-                                counter.innerText = Math.ceil(count + inc) + suffix;
-                                setTimeout(updateCount, 20);
+                        let currentCount = 0;
+
+                        const updateCount = () => {
+                            currentCount += inc;
+
+                            if (currentCount < target) {
+                                counter.innerText = Math.floor(currentCount) + suffix;
+                                setTimeout(updateCount, frameDuration);
                             } else {
                                 counter.innerText = target + suffix;
                             }
