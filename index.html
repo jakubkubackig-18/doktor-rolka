@@ -499,6 +499,64 @@
             display: block;
         }
 
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--gray-100);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-text strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .testimonial-author {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-author::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Portfolio Section - HTML5 VIDEO */
         .portfolio {
             padding: 100px 0;
@@ -916,6 +974,37 @@
                     <video controls playsinline webkit-playsinline preload="metadata" poster="rolka4.jpg">
                         <source src="rolka4.mp4" type="video/mp4">
                     </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="opinie">
+        <div class="container">
+            <div class="section-header">
+                <h2>Co mówią klienci?</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Nagrania z Kubą to <strong>pełen profesjonalizm</strong>. Zaczynając od sprzętu, przez sam plan
+                        zdjęciowy i <strong>finalny efekt wysokiej jakości</strong>. Kuba jest świetnym montażystą -
+                        działa zgodnie ze scenariuszem, ale i <strong>sam wykazuje się inicjatywą</strong> i dodatkowymi
+                        pomysłami. Komunikaty o dosyć trudnej tematyce zostały nie tylko dobrze nagrane, ale również
+                        dobrze wybrzmiały, z odpowiednimi napisami i dopasowanym VO. Materiały wyszły inspirująco,
+                        motywująco, a ich <strong>jakość zachwyciła wielu odbiorców</strong>. Polecam tworzenie contentu
+                        z Kubą!"
+                    </div>
+                    <div class="testimonial-author">Tobiasz</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Z Kubą nagrywaliśmy dłuższe filmy, z których Kuba wyciągał najciekawsze fragmenty i tworzył
+                        rolki. Nie raz byłem zaskoczony, jak później te <strong>rolki wykręcały bardzo dużo
+                            wyświetleń</strong>."
+                    </div>
+                    <div class="testimonial-author">Piotr</div>
                 </div>
             </div>
         </div>
