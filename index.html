@@ -269,120 +269,69 @@
             position: relative;
         }
 
-        /* Hero Animation - Option 2: Abstract Studio */
-        .studio-ring {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border: 2px dashed rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            animation: spin 10s linear infinite;
-        }
-
-        .studio-ring-outer {
-            width: 200px;
-            height: 200px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            animation: spin 20s linear infinite reverse;
-        }
-
-        .studio-corner {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border-color: rgba(255, 255, 255, 0.5);
-            border-style: solid;
-            transition: all 0.3s;
-        }
-
-        .c-tl {
-            top: 20px;
-            left: 20px;
-            border-width: 2px 0 0 2px;
-        }
-
-        .c-tr {
-            top: 20px;
-            right: 20px;
-            border-width: 2px 2px 0 0;
-        }
-
-        .c-bl {
-            bottom: 20px;
-            left: 20px;
-            border-width: 0 0 2px 2px;
-        }
-
-        .c-br {
-            bottom: 20px;
-            right: 20px;
-            border-width: 0 2px 2px 0;
-        }
-
-        .studio-rec {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            /* Offset for corner */
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: monospace;
-            color: #ff5555;
-            font-size: 0.9rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .rec-dot {
-            width: 10px;
-            height: 10px;
-            background: #ff5555;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-
+        /* Hero Animation - Option 3: Elegant Stat Cards */
         .hero-stats {
             display: flex;
-            gap: 32px;
-            margin-top: 24px;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
         }
 
-        .stat {
+        .stat-card {
+            background: var(--navy);
+            color: var(--white);
+            padding: 32px 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(30, 58, 95, 0.15);
+            opacity: 0;
+            /* Hidden initially */
+            transform: translateY(30px);
+            animation: slideInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(30, 58, 95, 0.25);
         }
 
         .stat-number {
             font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            color: var(--navy);
+            font-size: 3rem;
+            color: var(--white);
+            /* White text for contrast on navy */
+            margin-bottom: 8px;
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.85rem;
-            color: var(--gray-600);
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
         }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 
         /* Problem Section */
         .problem {
@@ -830,24 +779,12 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-image">
-                    <!-- Option 2: Abstract Studio -->
-                    <div class="studio-ring"></div>
-                    <div class="studio-ring studio-ring-outer"></div>
-                    <div class="studio-corner c-tl"></div>
-                    <div class="studio-corner c-tr"></div>
-                    <div class="studio-corner c-bl"></div>
-                    <div class="studio-corner c-br"></div>
-                    <div class="studio-rec">
-                        <div class="rec-dot"></div> REC
-                    </div>
-                </div>
                 <div class="hero-stats">
-                    <div class="stat">
+                    <div class="stat-card">
                         <div class="stat-number">41%</div>
                         <div class="stat-label">pacjentów wybiera lekarza<br>przez social media</div>
                     </div>
-                    <div class="stat">
+                    <div class="stat-card">
                         <div class="stat-number">3x</div>
                         <div class="stat-label">więcej zapytań generują<br>treści edukacyjne</div>
                     </div>
