@@ -1146,7 +1146,7 @@
 
             // 1. Counter Animation
             const counters = document.querySelectorAll('.stat-number');
-            const speed = 200; // The lower the slower
+            // Speed variable removed, using duration logic inside startCounters
 
             const startCounters = (entries, observer) => {
                 entries.forEach(entry => {
@@ -1154,14 +1154,19 @@
                         const counter = entry.target;
                         const target = +counter.getAttribute('data-target');
                         const suffix = counter.getAttribute('data-suffix') || '';
+                        const duration = 1500; // Animation duration in ms
+                        const frameDuration = 20;
+                        const totalFrames = duration / frameDuration;
+                        const inc = target / totalFrames;
+
+                        let currentCount = 0;
 
                         const updateCount = () => {
-                            const count = +counter.innerText.replace(suffix, '');
-                            const inc = target / speed;
+                            currentCount += inc;
 
-                            if (count < target) {
-                                counter.innerText = Math.ceil(count + inc) + suffix;
-                                setTimeout(updateCount, 20);
+                            if (currentCount < target) {
+                                counter.innerText = Math.floor(currentCount) + suffix;
+                                setTimeout(updateCount, frameDuration);
                             } else {
                                 counter.innerText = target + suffix;
                             }
