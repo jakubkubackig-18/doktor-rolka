@@ -303,6 +303,8 @@
 
         .glass-orb:nth-child(1) {
             transform: translateX(-30px);
+            z-index: 2;
+            /* Sit on top */
         }
 
         .glass-orb:nth-child(2) {
@@ -312,7 +314,8 @@
             /* Overlap effect */
             background: rgba(30, 58, 95, 0.95);
             /* Match the first orb exactly */
-            z-index: -1;
+            z-index: 1;
+            /* Sit behind the first one, but above background */
         }
 
         @keyframes floatOrb {
@@ -834,7 +837,7 @@
                 <li><a href="#faq">FAQ</a></li>
                 <!-- <li><a href="blog/">Blog</a></li> -->
                 <li><a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank" class="nav-cta">Umów
-                        rozmowę</a></li>
+                        konsultację</a></li>
             </ul>
             <button class="mobile-menu" id="mobile-menu-btn" aria-label="Menu">
                 <span></span>
@@ -1084,7 +1087,7 @@
                 <p>20-minutowa rozmowa, podczas której omówimy Twoje potrzeby i możliwości współpracy. Bez zobowiązań.
                 </p>
                 <a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank"
-                    class="btn btn-white btn-large">Umów rozmowę</a>
+                    class="btn btn-white btn-large">Umów konsultację</a>
                 <div class="cta-contact-alt">
                     <p>Wolisz napisać? <a href="mailto:jakubkubacki.g@gmail.com">jakubkubacki.g@gmail.com</a></p>
                 </div>
