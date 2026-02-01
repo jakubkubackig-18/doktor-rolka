@@ -1,0 +1,11 @@
+# Robots.txt for doktorrolka.pl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://doktorrolka.pl/sitemap.xml
+
+# Disallow dev/draft files
+Disallow: /index-draft-hero.html
+Disallow: /*.zip$
