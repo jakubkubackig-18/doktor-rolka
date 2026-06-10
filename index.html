@@ -43,7 +43,7 @@
             "@type": "ContactPoint",
             "contactType": "customer service",
             "email": "jakubkubacki.g@gmail.com",
-            "url": "https://calendly.com/jakubkubacki-g/konsultacja"
+            "telephone": "+48796766068"
         },
         "sameAs": [
             "https://www.instagram.com/doktorrolka"
@@ -617,6 +617,133 @@
             background: var(--navy);
         }
 
+        /* Oferta Section */
+        .oferta {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .oferta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .oferta-card {
+            background: var(--gray-100);
+            padding: 40px;
+            border-radius: 16px;
+            border-top: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .oferta-card.premium {
+            background: var(--navy);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(30, 58, 95, 0.15);
+            position: relative;
+        }
+
+        .oferta-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .oferta-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .oferta-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+            font-family: 'DM Serif Display', serif;
+        }
+
+        .oferta-card.premium .price {
+            color: var(--white);
+        }
+
+        .oferta-card p {
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+
+        .oferta-card.premium p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .oferta-card h4 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .oferta-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .oferta-card ul li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .oferta-card.premium ul li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .oferta-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .oferta-target {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: auto;
+        }
+
+        .oferta-target h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: var(--navy);
+        }
+
+        .oferta-target p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .oferta-grid {
+                grid-template-columns: 1fr;
+            }
+            .oferta-card.premium {
+                transform: none;
+            }
+        }
+
         /* FAQ Section */
         .faq {
             padding: 100px 0;
@@ -866,8 +993,7 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="blog/index.html">Blog</a></li>
-                <li><a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank" class="nav-cta">Umów
-                        konsultację</a></li>
+                <li><a href="tel:796766068" class="nav-cta">📞 796 766 068</a></li>
             </ul>
             <button class="mobile-menu" id="mobile-menu-btn" aria-label="Menu">
                 <span></span>
@@ -886,8 +1012,7 @@
                 <p>Profesjonalne wideo do social media, które buduje zaufanie i przyciąga nowych pacjentów. Ty leczysz —
                     my zajmujemy się całą resztą.</p>
                 <div class="hero-buttons">
-                    <a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank"
-                        class="btn btn-primary">Umów konsultację</a>
+                    <a href="tel:796766068" class="btn btn-primary">Zadzwoń: 796 766 068</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1008,7 +1133,58 @@
         </div>
     </section>
 
+    <!-- Oferta Section -->
+    <section class="oferta" id="oferta">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pakiety współpracy</h2>
+                <p>Wybierz opcję najlepiej dopasowaną do Twoich potrzeb i zacznij docierać do nowych pacjentów.</p>
+            </div>
+            <div class="oferta-grid">
+                <!-- Pakiet Start -->
+                <div class="oferta-card">
+                    <h3>Start — 4 rolki</h3>
+                    <div class="price">1500 zł</div>
+                    <p>Pakiet dla lekarza, specjalisty lub gabinetu, który chce zacząć publikować profesjonalne materiały video bez dużej produkcji.</p>
+                    <p>W trakcie jednego nagrania przygotowujemy krótkie rolki edukacyjne, które odpowiadają na najczęstsze pytania pacjentów i pokazują specjalistę w naturalny, profesjonalny sposób.</p>
+                    <h4>W pakiecie:</h4>
+                    <ul>
+                        <li>jednorazowe nagranie w gabinecie</li>
+                        <li>pomoc w dobraniu tematów</li>
+                        <li>4 gotowe rolki</li>
+                        <li>montaż</li>
+                        <li>napisy</li>
+                        <li>eksport pod Instagram, Facebook, TikTok i YouTube Shorts</li>
+                        <li>2 rundy poprawek</li>
+                    </ul>
+                    <div class="oferta-target">
+                        <h4>Dla kogo:</h4>
+                        <p>dla gabinetów, które chcą przetestować rolki i zobaczyć, jak pacjenci reagują na edukacyjny content.</p>
+                    </div>
+                </div>
 
+                <!-- Pakiet Miesiąc Treści -->
+                <div class="oferta-card premium">
+                    <div class="oferta-badge">Najlepszy wybór</div>
+                    <h3>Miesiąc treści — 10 rolek</h3>
+                    <div class="price">3500 zł</div>
+                    <p>Najlepszy wybór, jeśli chcesz mieć gotowy zestaw materiałów do regularnej publikacji na cały miesiąc.</p>
+                    <p>Podczas jednej sesji nagraniowej tworzymy serię rolek opartych o pytania pacjentów, najczęstsze mity, przebieg wizyty, zabiegi, wskazania i zalecenia po konsultacji.</p>
+                    <h4>W pakiecie:</h4>
+                    <ul>
+                        <li>jednorazowe nagranie w gabinecie</li>
+                        <li>przygotowanie listy tematów przed nagraniem</li>
+                        <li>struktura wypowiedzi do każdej rolki</li>
+                        <li>10 gotowych rolek</li>
+                        <li>montaż</li>
+                        <li>napisy</li>
+                        <li>eksport pod Instagram, Facebook, TikTok i YouTube Shorts</li>
+                        <li>2 rundy poprawek</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -1087,8 +1263,7 @@
                 <h2>Porozmawiajmy o Twoim gabinecie</h2>
                 <p>20-minutowa rozmowa, podczas której omówimy Twoje potrzeby i możliwości współpracy. Bez zobowiązań.
                 </p>
-                <a href="https://calendly.com/jakubkubacki-g/konsultacja" target="_blank"
-                    class="btn btn-white btn-large">Umów konsultację</a>
+                <a href="tel:796766068" class="btn btn-white btn-large">Zadzwoń: 796 766 068</a>
                 <div class="cta-contact-alt">
                     <p>Wolisz napisać? <a href="mailto:jakubkubacki.g@gmail.com">jakubkubacki.g@gmail.com</a></p>
                 </div>
