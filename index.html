@@ -624,20 +624,38 @@
         }
 
         .oferta-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 100%;
+            display: flex;
+            gap: 32px;
+            overflow-x: auto;
+            padding-bottom: 32px;
             margin: 0 auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--gray-200);
+        }
+
+        .oferta-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        .oferta-grid::-webkit-scrollbar-track {
+            background: var(--gray-200);
+            border-radius: 4px;
+        }
+        .oferta-grid::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
         }
 
         .oferta-card {
             background: var(--gray-100);
-            padding: 32px 24px;
+            padding: 40px;
             border-radius: 16px;
             border-top: 4px solid var(--accent);
             display: flex;
             flex-direction: column;
+            flex: 0 0 min(450px, 85vw);
+            scroll-snap-align: start;
         }
 
         .oferta-card.premium {
@@ -894,10 +912,6 @@
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
                 max-width: 600px;
-            }
-            .oferta-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 800px;
             }
         }
 
